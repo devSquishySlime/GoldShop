@@ -2,6 +2,7 @@ package me.squishyslime.goldShop;
 
 import me.squishyslime.goldShop.cmds.balanceCMD;
 import me.squishyslime.goldShop.cmds.moneyCMD;
+import me.squishyslime.goldShop.cmds.payCMD;
 import me.squishyslime.goldShop.cmds.reloadCMD;
 import me.squishyslime.goldShop.utils.EconomyManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -20,6 +21,7 @@ public final class Main extends JavaPlugin {
         Objects.requireNonNull(getCommand("gs")).setExecutor(new reloadCMD(this));
         Objects.requireNonNull(getCommand("money")).setExecutor(new moneyCMD(this));
         Objects.requireNonNull(getCommand("bal")).setExecutor(new balanceCMD(this));
+        Objects.requireNonNull(getCommand("pay")).setExecutor(new payCMD(this));
     }
 
     @Override

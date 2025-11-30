@@ -14,3 +14,5 @@ commands:
     aliases: mon
   bal:
     aliases: [balance]
+  pay:
+    aliases: [sendmoney]
