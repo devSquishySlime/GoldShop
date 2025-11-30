@@ -1,0 +1,8 @@
+name: GoldShop
+version: '1.0'
+main: me.squishyslime.goldShop.Main
+api-version: '1.21'
+prefix: -[MK]-
+load: STARTUP
+authors: [ SquishySlime ]
+description: A new way of managing a minecraft server easily!
