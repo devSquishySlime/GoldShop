@@ -12,3 +12,5 @@ commands:
   money:
     permission: gs.money.cmd
     aliases: mon
+  bal:
+    aliases: [balance]

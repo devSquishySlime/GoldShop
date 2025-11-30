@@ -16,12 +16,11 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class moneyCMD implements CommandExecutor, TabCompleter {
-    private final Main plugin;
     private final EconomyManager em;
     public moneyCMD(Main plugin) {
-        this.plugin = plugin;
         this.em = plugin.em;
     }
 
@@ -44,12 +43,12 @@ public class moneyCMD implements CommandExecutor, TabCompleter {
             return false;
         }
         try{
-            Integer amount = Integer.valueOf(args[2]);
+            int amount = Integer.parseInt(args[2]);
             if(args[0].equalsIgnoreCase("add")) {
                 em.addMoney(reciever.getUniqueId(),amount);
                 if(reciever.isOnline() && em.showMoneyOnTab) {
                     Player p = Bukkit.getPlayerExact(args[1]);
-                    p.playerListName(Component.text(p.displayName() + "    ").append(Component.text(em.getMoney(p.getUniqueId()) + em.currencySymbol, TextColor.fromCSSHexString("#80f27e"))));
+                    Objects.requireNonNull(p).playerListName(Component.text(p.displayName() + "    ").append(Component.text(em.getMoney(p.getUniqueId()) + em.currencySymbol, TextColor.fromCSSHexString("#80f27e"))));
                 }
                 sender.sendMessage(Component.text(String.format("[%s] Added %d %s to %s",em.prefix,amount,em.currencySymbol,args[1]),TextColor.fromHexString("#30e607")));
             }
@@ -57,7 +56,7 @@ public class moneyCMD implements CommandExecutor, TabCompleter {
                 em.removeMoney(reciever.getUniqueId(),amount);
                 if(reciever.isOnline() && em.showMoneyOnTab) {
                     Player p = Bukkit.getPlayerExact(args[1]);
-                    p.playerListName(Component.text(p.displayName() + "    ").append(Component.text(em.getMoney(p.getUniqueId()) + em.currencySymbol, TextColor.fromCSSHexString("#80f27e"))));
+                    Objects.requireNonNull(p).playerListName(Component.text(p.displayName() + "    ").append(Component.text(em.getMoney(p.getUniqueId()) + em.currencySymbol, TextColor.fromCSSHexString("#80f27e"))));
                 }
                 sender.sendMessage(Component.text(String.format("[%s] Taken %d %s from %s",em.prefix,amount,em.currencySymbol,args[1]),TextColor.fromHexString("#30e607")));
             }
@@ -65,7 +64,7 @@ public class moneyCMD implements CommandExecutor, TabCompleter {
                 em.setMoney(reciever.getUniqueId(),amount);
                 if(reciever.isOnline() && em.showMoneyOnTab) {
                     Player p = Bukkit.getPlayerExact(args[1]);
-                    p.playerListName(Component.text(p.displayName() + "    ").append(Component.text(em.getMoney(p.getUniqueId()) + em.currencySymbol, TextColor.fromCSSHexString("#80f27e"))));
+                    Objects.requireNonNull(p).playerListName(Component.text(p.displayName() + "    ").append(Component.text(em.getMoney(p.getUniqueId()) + em.currencySymbol, TextColor.fromCSSHexString("#80f27e"))));
                 }
                 sender.sendMessage(Component.text(String.format("[%s] Set %d %s to %s",em.prefix,amount,em.currencySymbol,args[1]),TextColor.fromHexString("#30e607")));
             }
