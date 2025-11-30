@@ -4,15 +4,18 @@ import me.squishyslime.goldShop.cmds.reloadCMD;
 import me.squishyslime.goldShop.utils.EconomyManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public final class Main extends JavaPlugin {
+import java.util.Objects;
 
+public final class Main extends JavaPlugin {
+    public EconomyManager em;
+    public String version = "1.0.0";
     @Override
     public void onEnable() {
         saveDefaultConfig();
-        EconomyManager em = new EconomyManager(this);
+        em = new EconomyManager(this);
 
 //        Commands
-        getCommand("reload").setExecutor(new reloadCMD(this));
+        Objects.requireNonNull(getCommand("gs")).setExecutor(new reloadCMD(this));
     }
 
     @Override

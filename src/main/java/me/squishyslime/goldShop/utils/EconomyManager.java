@@ -6,12 +6,13 @@ import org.bukkit.configuration.file.FileConfiguration;
 import java.util.UUID;
 
 public class EconomyManager {
-    private FileConfiguration config;
-    private Main plugin;
+    private final FileConfiguration config;
+    private final Main plugin;
     public String currencySymbol;
     public boolean allowNegatives;
     public int startingMoney;
     public boolean showMoneyOnTab;
+    public String prefix;
     public EconomyManager(Main plugin) {
         this.plugin = plugin;
         this.config = plugin.getConfig();
@@ -19,6 +20,7 @@ public class EconomyManager {
         this.allowNegatives = config.getBoolean("settings.allowNegatives");
         this.startingMoney = config.getInt("settings.startingMoney");
         this.showMoneyOnTab = config.getBoolean("settings.showMoneyOnTab");
+        this.prefix = config.getString("prefix");
     }
     public void reloadConfig() {
         plugin.reloadConfig();
@@ -26,6 +28,7 @@ public class EconomyManager {
         this.allowNegatives = config.getBoolean("settings.allowNegatives");
         this.startingMoney = config.getInt("settings.startingMoney");
         this.showMoneyOnTab = config.getBoolean("settings.showMoneyOnTab");
+        this.prefix = config.getString("prefix");
     }
 
     public boolean isPlayerInConfig(UUID player) {
