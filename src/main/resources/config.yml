@@ -1,0 +1,9 @@
+prefix: "GS"
+
+settings:
+  allowNegatives: false
+  currencySymbol: "$"
+  startingMoney: 100
+  showMoneyOnTab: true
+
+balances: {}
