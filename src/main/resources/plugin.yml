@@ -9,3 +9,6 @@ commands:
   gs:
     permission: gs.cmd
     aliases: goldshop
+  money:
+    permission: gs.money.cmd
+    aliases: mon
